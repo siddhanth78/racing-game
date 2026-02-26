@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://byy8nqqxdmeii"]
+
+[ext_resource type="Script" uid="uid://dxdlgjixcw6v6" path="res://scenes/car/car.gd" id="1_yhfra"]
+[ext_resource type="Texture2D" uid="uid://jr65sjtn7pw7" path="res://assets/Car.png" id="2_rytg7"]
+[ext_resource type="OccluderPolygon2D" uid="uid://cndyxqo51xm6w" path="res://scenes/car/car.tres" id="3_rytg7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhfra"]
+size = Vector2(24, 8)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_rytg7"]
+color = Color(0, 0, 0, 0.36078432)
+thickness = 24
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_x7uf8"]
+color = Color(0, 0.7647059, 0, 0.80784315)
+thickness = 2
+
+[node name="Car" type="CharacterBody2D" unique_id=2013520536]
+position = Vector2(114, 65)
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_yhfra")
+acceleration = 100.0
+max_speed = 350.0
+steer_strength = 2.0
+min_zoom = 1.0
+max_zoom = 3.0
+zoom_damp = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1101533284]
+rotation = 1.5707964
+texture = ExtResource("2_rytg7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=552254806]
+shape = SubResource("RectangleShape2D_yhfra")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=574957948]
+rotation = 1.5707964
+ignore_rotation = false
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=97674192]
+show_behind_parent = true
+occluder = ExtResource("3_rytg7")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=730168051]
+offset_left = 12.0
+offset_top = -12.0
+offset_right = 16.0
+offset_bottom = 12.0
+rotation = 1.5707964
+theme_override_styles/background = SubResource("StyleBoxLine_rytg7")
+theme_override_styles/fill = SubResource("StyleBoxLine_x7uf8")
+fill_mode = 3
+show_percentage = false

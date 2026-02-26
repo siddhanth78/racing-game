@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 
 @export var acceleration := 150.0
 @export var rev_acceleration := 75.0
@@ -7,6 +7,10 @@ extends Area2D
 @export var steer_strength := 6.0
 @export var min_steer_factor := 0.5
 
+@export var min_zoom := 2.0
+@export var max_zoom := 4.0
+@export var zoom_damp := 1.0
+
 var min_clamp := 0.0
 var max_clamp := 0.0
 
@@ -14,9 +18,24 @@ var _throttle := 0.0
 var _velocity := 0.0
 var _steer := 0.0
 
+var curr_zoom := 0.0
+
+var steering := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$Camera2D.zoom.x = max_zoom
+	$Camera2D.zoom.y = max_zoom
+	curr_zoom = max_zoom
+	position.x = 242.0
+	position.y = 268.0
+	rotation = 0.0
+	
+func reset() -> void:
+	_velocity = 0.0
+	velocity = Vector2.ZERO
+	rotation = 0.0
+	call_deferred("set_position", Vector2(242.0, 268.0))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -25,9 +44,16 @@ func _process(delta: float) -> void:
 	
 func _physics_process(delta: float) -> void:
 	apply_throttle(delta)
-	if _velocity != 0.0:
+	if _velocity != 0:
 		apply_rotation(delta)
 	position += transform.x * delta * _velocity
+	if move_and_slide():
+		set_physics_process(false)
+		_velocity *= 0.6
+		position -= transform.x * 10.0 * sign(_velocity)
+		await get_tree().create_timer(0.2).timeout
+		set_physics_process(true)
+	$ProgressBar.set_value_no_signal((absf(_velocity) / max_speed) * 100.0)
 	
 func apply_throttle(delta: float) -> void:
 	if _throttle > 0.0 and _velocity >= 0:
@@ -57,5 +83,17 @@ func get_steer_factor() -> float:
 	
 func apply_rotation(delta: float) -> void:
 	if _steer == 0.0:
+		if steering:
+			curr_zoom += zoom_damp * delta
+			curr_zoom = clampf(curr_zoom, min_zoom, max_zoom)
+			$Camera2D.zoom.x = curr_zoom
+			$Camera2D.zoom.y = curr_zoom
+			if curr_zoom == max_zoom:
+				steering = false
 		return
+	steering = true
+	curr_zoom -= zoom_damp * delta
+	curr_zoom = clampf(curr_zoom, min_zoom, max_zoom)
+	$Camera2D.zoom.x = curr_zoom
+	$Camera2D.zoom.y = curr_zoom
 	rotate(get_steer_factor() * delta * _steer * sign(_velocity))

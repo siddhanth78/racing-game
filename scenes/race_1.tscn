@@ -1,0 +1,314 @@
+[gd_scene format=3 uid="uid://y6ku1oq4wag2"]
+
+[ext_resource type="PackedScene" uid="uid://c75rl5624u2d2" path="res://scenes/tracks/track.tscn" id="1_0dpnt"]
+[ext_resource type="PackedScene" uid="uid://byy8nqqxdmeii" path="res://scenes/car/car.tscn" id="2_2r6ls"]
+[ext_resource type="Texture2D" uid="uid://b5h4o021dandt" path="res://assets/Stand.png" id="3_g6m0u"]
+[ext_resource type="Texture2D" uid="uid://deamyqftvt7tp" path="res://cone2d.jpeg" id="4_ni0vy"]
+[ext_resource type="Texture2D" uid="uid://co15fblymcx64" path="res://assets/Shed.png" id="5_2r6ls"]
+[ext_resource type="AudioStream" uid="uid://dnpe1vnymik5m" path="res://assets/crowd.mp3" id="5_g6m0u"]
+[ext_resource type="AudioStream" uid="uid://i342yc8c7lci" path="res://assets/chant.mp3" id="6_ni0vy"]
+[ext_resource type="AudioStream" uid="uid://b4hy617vk3tex" path="res://assets/extravibes.mp3" id="8_q1lnt"]
+[ext_resource type="AudioStream" uid="uid://4amnpoomj34" path="res://assets/vibes.mp3" id="8_ykkk5"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2r6ls"]
+polygon = PackedVector2Array(-34, -18, 29, -18, 28, 3, -34, 2)
+
+[node name="Race1" type="Node2D" unique_id=99033511]
+
+[node name="Track" parent="." unique_id=927561726 instance=ExtResource("1_0dpnt")]
+
+[node name="Car" parent="." unique_id=1591443225 instance=ExtResource("2_2r6ls")]
+position = Vector2(225, 269)
+min_zoom = 6.0
+max_zoom = 8.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=657752109]
+position = Vector2(237, 108)
+scale = Vector2(0.7, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=568021820]
+texture = ExtResource("3_g6m0u")
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D" unique_id=2000598138]
+position = Vector2(-24.285715, 28)
+scale = Vector2(0.34244877, 0.42248884)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Area2D" unique_id=2050813402]
+position = Vector2(27.142853, 28.999998)
+scale = Vector2(0.3422619, 0.43655357)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D" unique_id=853291157]
+position = Vector2(-2.179827e-05, 4)
+stream = ExtResource("5_g6m0u")
+volume_db = 6.0
+autoplay = true
+max_distance = 200.0
+parameters/looping = true
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=1145597864]
+position = Vector2(295, 108)
+scale = Vector2(0.7, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D2" unique_id=1719551102]
+texture = ExtResource("3_g6m0u")
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D2" unique_id=182389155]
+position = Vector2(-24.285715, 28)
+scale = Vector2(0.34244877, 0.42248884)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Area2D2" unique_id=457156146]
+position = Vector2(27.142853, 28.999998)
+scale = Vector2(0.3422619, 0.43655357)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D2" unique_id=1162175169]
+position = Vector2(-2.179827e-05, 4)
+stream = ExtResource("6_ni0vy")
+volume_db = 12.0
+autoplay = true
+max_distance = 200.0
+parameters/looping = true
+
+[node name="Area2D4" type="Area2D" parent="." unique_id=240991902]
+position = Vector2(418, 173)
+rotation = 1.5707964
+scale = Vector2(0.7, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D4" unique_id=1322421796]
+texture = ExtResource("3_g6m0u")
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D4" unique_id=1966979957]
+position = Vector2(-24.285715, 28)
+scale = Vector2(0.34244877, 0.42248884)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Area2D4" unique_id=137525907]
+position = Vector2(27.142853, 28.999998)
+scale = Vector2(0.3422619, 0.43655357)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D4" unique_id=2068773586]
+position = Vector2(-2.179827e-05, 4)
+stream = ExtResource("5_g6m0u")
+volume_db = 6.0
+autoplay = true
+max_distance = 200.0
+parameters/looping = true
+
+[node name="Area2D5" type="Area2D" parent="." unique_id=1978564654]
+position = Vector2(418, 225)
+rotation = 1.5707964
+scale = Vector2(0.7, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D5" unique_id=1019874260]
+texture = ExtResource("3_g6m0u")
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D5" unique_id=1132864430]
+position = Vector2(-24.285715, 28)
+scale = Vector2(0.34244877, 0.42248884)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Area2D5" unique_id=516470115]
+position = Vector2(27.142853, 28.999998)
+scale = Vector2(0.3422619, 0.43655357)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D5" unique_id=795099795]
+position = Vector2(-2.179827e-05, 4)
+stream = ExtResource("5_g6m0u")
+volume_db = 6.0
+autoplay = true
+max_distance = 200.0
+parameters/looping = true
+
+[node name="Area2D3" type="Area2D" parent="." unique_id=1126906553]
+position = Vector2(353, 108)
+scale = Vector2(0.7, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D3" unique_id=1351369012]
+texture = ExtResource("3_g6m0u")
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D3" unique_id=759938118]
+position = Vector2(-24.285715, 28)
+scale = Vector2(0.34244877, 0.42248884)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Area2D3" unique_id=831936862]
+position = Vector2(27.142853, 28.999998)
+scale = Vector2(0.3422619, 0.43655357)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D3" unique_id=463083907]
+position = Vector2(-2.179827e-05, 4)
+stream = ExtResource("5_g6m0u")
+volume_db = 6.0
+autoplay = true
+max_distance = 200.0
+parameters/looping = true
+
+[node name="Area2D6" type="Area2D" parent="." unique_id=1197194742]
+position = Vector2(163, 172)
+rotation = 4.712389
+scale = Vector2(0.7, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D6" unique_id=1543591248]
+texture = ExtResource("3_g6m0u")
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D6" unique_id=1222313743]
+position = Vector2(-24.285715, 28)
+scale = Vector2(0.34244877, 0.42248884)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Area2D6" unique_id=2082806333]
+position = Vector2(27.142853, 28.999998)
+scale = Vector2(0.3422619, 0.43655357)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D6" unique_id=367250712]
+position = Vector2(-2.179827e-05, 4)
+stream = ExtResource("5_g6m0u")
+volume_db = 6.0
+autoplay = true
+max_distance = 200.0
+parameters/looping = true
+
+[node name="Area2D8" type="Area2D" parent="." unique_id=2077636478]
+position = Vector2(239.99998, 298)
+rotation = 3.1415927
+scale = Vector2(0.7, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D8" unique_id=1729113217]
+texture = ExtResource("3_g6m0u")
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D8" unique_id=1746586700]
+position = Vector2(-24.285715, 28)
+scale = Vector2(0.34244877, 0.42248884)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Area2D8" unique_id=803123877]
+position = Vector2(27.142853, 28.999998)
+scale = Vector2(0.3422619, 0.43655357)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D8" unique_id=833601839]
+position = Vector2(-2.179827e-05, 4)
+stream = ExtResource("5_g6m0u")
+volume_db = 6.0
+autoplay = true
+max_distance = 200.0
+parameters/looping = true
+
+[node name="Area2D9" type="Area2D" parent="." unique_id=897770696]
+position = Vector2(299, 298)
+rotation = 3.1415927
+scale = Vector2(0.7, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D9" unique_id=1269605364]
+texture = ExtResource("3_g6m0u")
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D9" unique_id=1179776297]
+position = Vector2(-24.285715, 28)
+scale = Vector2(0.34244877, 0.42248884)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Area2D9" unique_id=919427743]
+position = Vector2(27.142853, 28.999998)
+scale = Vector2(0.3422619, 0.43655357)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D9" unique_id=2088652633]
+position = Vector2(-2.179827e-05, 4)
+stream = ExtResource("5_g6m0u")
+volume_db = 6.0
+autoplay = true
+max_distance = 200.0
+parameters/looping = true
+
+[node name="Area2D10" type="Area2D" parent="." unique_id=1323584686]
+position = Vector2(352.99997, 298)
+rotation = 3.1415927
+scale = Vector2(0.7, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D10" unique_id=505161095]
+texture = ExtResource("3_g6m0u")
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D10" unique_id=1244687966]
+position = Vector2(-24.285715, 28)
+scale = Vector2(0.34244877, 0.42248884)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Area2D10" unique_id=1442782679]
+position = Vector2(27.142853, 28.999998)
+scale = Vector2(0.3422619, 0.43655357)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D10" unique_id=977325667]
+position = Vector2(-2.179827e-05, 4)
+stream = ExtResource("8_q1lnt")
+volume_db = 14.0
+autoplay = true
+max_distance = 200.0
+parameters/looping = true
+
+[node name="Area2D7" type="Area2D" parent="." unique_id=699779046]
+position = Vector2(163, 225)
+rotation = 4.712389
+scale = Vector2(0.7, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D7" unique_id=209964271]
+texture = ExtResource("3_g6m0u")
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D7" unique_id=1530923022]
+position = Vector2(-24.285715, 28)
+scale = Vector2(0.34244877, 0.42248884)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Area2D7" unique_id=1489359321]
+position = Vector2(27.142853, 28.999998)
+scale = Vector2(0.3422619, 0.43655357)
+energy = 2.0
+texture = ExtResource("4_ni0vy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Area2D7" unique_id=1464196178]
+position = Vector2(-2.179827e-05, 4)
+stream = ExtResource("8_ykkk5")
+volume_db = 10.0
+autoplay = true
+max_distance = 200.0
+parameters/looping = true
+
+[node name="Area2D11" type="Area2D" parent="." unique_id=153598779]
+position = Vector2(-292, 0)
+scale = Vector2(2, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D11" unique_id=1841678519]
+position = Vector2(290, 239)
+rotation = 3.1415927
+texture = ExtResource("5_2r6ls")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Area2D11" unique_id=2080664159]
+show_behind_parent = true
+position = Vector2(293, 241)
+occluder = SubResource("OccluderPolygon2D_2r6ls")
