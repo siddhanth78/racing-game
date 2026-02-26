@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dxdlgjixcw6v6" path="res://scenes/car/car.gd" id="1_yhfra"]
 [ext_resource type="Texture2D" uid="uid://jr65sjtn7pw7" path="res://assets/Car.png" id="2_rytg7"]
 [ext_resource type="OccluderPolygon2D" uid="uid://cndyxqo51xm6w" path="res://scenes/car/car.tres" id="3_rytg7"]
+[ext_resource type="AudioStream" uid="uid://dv2fu4h2egy84" path="res://assets/carmotor.mp3" id="4_x7uf8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhfra"]
 size = Vector2(24, 8)
@@ -51,3 +52,9 @@ theme_override_styles/background = SubResource("StyleBoxLine_rytg7")
 theme_override_styles/fill = SubResource("StyleBoxLine_x7uf8")
 fill_mode = 3
 show_percentage = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1020099370]
+stream = ExtResource("4_x7uf8")
+volume_db = 16.0
+autoplay = true
+parameters/looping = true

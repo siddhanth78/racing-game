@@ -7,9 +7,11 @@ extends CharacterBody2D
 @export var steer_strength := 6.0
 @export var min_steer_factor := 0.5
 
-@export var min_zoom := 2.0
-@export var max_zoom := 4.0
-@export var zoom_damp := 1.0
+@export var min_zoom := 6.0
+@export var max_zoom := 8.0
+@export var zoom_damp := 2.0
+@export var szoom_damp := 0.5
+@export var speed_zoom := 4.0
 
 var min_clamp := 0.0
 var max_clamp := 0.0
@@ -24,9 +26,9 @@ var steering := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Camera2D.zoom.x = max_zoom
-	$Camera2D.zoom.y = max_zoom
-	curr_zoom = max_zoom
+	$Camera2D.zoom.x = min_zoom
+	$Camera2D.zoom.y = min_zoom
+	curr_zoom = min_zoom
 	position.x = 242.0
 	position.y = 268.0
 	rotation = 0.0
@@ -71,7 +73,15 @@ func apply_throttle(delta: float) -> void:
 		else:
 			_velocity -= friction * delta
 			_velocity = maxf(_velocity, 0.0)
+		curr_zoom += szoom_damp * delta
+		curr_zoom = clampf(curr_zoom, speed_zoom, min_zoom)
+			
+	if _throttle != 0.0 and steering == false:
+		curr_zoom -= szoom_damp * delta
+		curr_zoom = clampf(curr_zoom, speed_zoom, min_zoom)
 		
+	$Camera2D.zoom.x = curr_zoom
+	$Camera2D.zoom.y = curr_zoom
 	_velocity = clampf(_velocity, min_clamp, max_clamp)
 	
 func get_steer_factor() -> float:
@@ -84,16 +94,16 @@ func get_steer_factor() -> float:
 func apply_rotation(delta: float) -> void:
 	if _steer == 0.0:
 		if steering:
-			curr_zoom += zoom_damp * delta
-			curr_zoom = clampf(curr_zoom, min_zoom, max_zoom)
+			curr_zoom -= zoom_damp * delta
+			curr_zoom = clampf(curr_zoom, speed_zoom, max_zoom)
 			$Camera2D.zoom.x = curr_zoom
 			$Camera2D.zoom.y = curr_zoom
-			if curr_zoom == max_zoom:
+			if curr_zoom <= min_zoom:
 				steering = false
 		return
 	steering = true
-	curr_zoom -= zoom_damp * delta
-	curr_zoom = clampf(curr_zoom, min_zoom, max_zoom)
+	curr_zoom += zoom_damp * delta
+	curr_zoom = clampf(curr_zoom, speed_zoom, max_zoom)
 	$Camera2D.zoom.x = curr_zoom
 	$Camera2D.zoom.y = curr_zoom
 	rotate(get_steer_factor() * delta * _steer * sign(_velocity))
