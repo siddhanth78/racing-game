@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://d12yxdsdjtwyb"]
+
+[ext_resource type="Script" uid="uid://c4otkrpefdbfg" path="res://scenes/car/opponent.gd" id="1_v26us"]
+[ext_resource type="Texture2D" uid="uid://fjkgdd7vid2a" path="res://assets/cars.png" id="2_4vpcs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b17a5"]
+atlas = ExtResource("2_4vpcs")
+region = Rect2(2, 56, 12, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v26us"]
+size = Vector2(24, 8)
+
+[node name="Opponent" type="CharacterBody2D" unique_id=715724631]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(301, 273)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_v26us")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1212654595]
+position = Vector2(0.125, 0.5)
+rotation = 1.5707964
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_b17a5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1185069469]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(0.125, 0.5)
+scale = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_v26us")

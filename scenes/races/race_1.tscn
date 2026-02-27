@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c75rl5624u2d2" path="res://scenes/tracks/track.tscn" id="1_w1cb2"]
 [ext_resource type="PackedScene" uid="uid://byy8nqqxdmeii" path="res://scenes/car/car.tscn" id="2_c6fq0"]
+[ext_resource type="PackedScene" uid="uid://d12yxdsdjtwyb" path="res://scenes/car/opponent.tscn" id="2_itng5"]
 [ext_resource type="Texture2D" uid="uid://b5h4o021dandt" path="res://assets/Stand.png" id="3_itng5"]
 [ext_resource type="Texture2D" uid="uid://deamyqftvt7tp" path="res://cone2d.jpeg" id="4_41a2b"]
 [ext_resource type="AudioStream" uid="uid://i342yc8c7lci" path="res://assets/chant.mp3" id="5_03ixw"]
@@ -11,13 +12,30 @@
 [ext_resource type="Texture2D" uid="uid://dwtjdxswuppgj" path="res://pointlight2d.jpeg" id="9_c6fq0"]
 [ext_resource type="Texture2D" uid="uid://co15fblymcx64" path="res://assets/Shed.png" id="9_dx5oe"]
 
+[sub_resource type="Curve2D" id="Curve2D_itng5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 78, -2, 0, 0, 0, 0, 91, -17, 0, 0, 0, 0, 86, -129, 0, 0, 0, 0, 75, -136, 0, 0, 0, 0, -96, -130, 0, 0, 0, 0, -111, -117, 0, 0, 0, 0, -110, -16, 0, 0, 0, 0, -93, -8, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
 [node name="Race1" type="Node2D" unique_id=99033511]
 
 [node name="Track" parent="." unique_id=927561726 instance=ExtResource("1_w1cb2")]
 position = Vector2(306, 281)
 
+[node name="Opponent" parent="." unique_id=1563058585 instance=ExtResource("2_itng5")]
+acceleration = 50.0
+max_speed = 300.0
+SLOW_RADIUS = 75.0
+SLOW_SPEED = 30.0
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1061158620]
+position = Vector2(301, 273)
+curve = SubResource("Curve2D_itng5")
+
 [node name="Car" parent="." unique_id=1591443225 instance=ExtResource("2_c6fq0")]
-position = Vector2(225, 269)
+position = Vector2(301, 262)
+acceleration = 150.0
 min_zoom = 6.0
 max_zoom = 8.0
 
@@ -29,12 +47,14 @@ scale = Vector2(0.7, 1)
 texture = ExtResource("3_itng5")
 
 [node name="PointLight2D" type="PointLight2D" parent="Area2D" unique_id=2000598138]
+visible = false
 position = Vector2(-26.878977, 18)
 scale = Vector2(0.89159673, 0.42248884)
 energy = 2.0
 texture = ExtResource("4_41a2b")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Area2D" unique_id=2050813402]
+visible = false
 position = Vector2(25.714294, 17.999998)
 scale = Vector2(0.81015736, 0.43655357)
 energy = 2.0
@@ -53,12 +73,14 @@ scale = Vector2(0.7, 1)
 texture = ExtResource("3_itng5")
 
 [node name="PointLight2D" type="PointLight2D" parent="Area2D2" unique_id=115744037]
+visible = false
 position = Vector2(-26.878977, 18)
 scale = Vector2(0.89159673, 0.42248884)
 energy = 2.0
 texture = ExtResource("4_41a2b")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Area2D2" unique_id=1175955978]
+visible = false
 position = Vector2(25.714294, 17.999998)
 scale = Vector2(0.81015736, 0.43655357)
 energy = 2.0
@@ -78,12 +100,14 @@ scale = Vector2(0.7, 1)
 texture = ExtResource("3_itng5")
 
 [node name="PointLight2D" type="PointLight2D" parent="Area2D4" unique_id=1966979957]
+visible = false
 position = Vector2(-27.142857, 17)
 scale = Vector2(0.7453076, 0.42248884)
 energy = 2.0
 texture = ExtResource("4_41a2b")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Area2D4" unique_id=137525907]
+visible = false
 position = Vector2(25.714283, 18)
 scale = Vector2(0.7637494, 0.43655357)
 texture = ExtResource("4_41a2b")
@@ -97,12 +121,14 @@ scale = Vector2(0.7, 1)
 texture = ExtResource("3_itng5")
 
 [node name="PointLight2D" type="PointLight2D" parent="Area2D5" unique_id=1132864430]
+visible = false
 position = Vector2(-25.714289, 18)
 scale = Vector2(0.7895522, 0.42248884)
 energy = 2.0
 texture = ExtResource("4_41a2b")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Area2D5" unique_id=516470115]
+visible = false
 position = Vector2(24.285694, 18)
 scale = Vector2(0.71019065, 0.43655357)
 texture = ExtResource("4_41a2b")
@@ -123,11 +149,13 @@ scale = Vector2(0.7, 1)
 texture = ExtResource("3_itng5")
 
 [node name="PointLight2D" type="PointLight2D" parent="Area2D3" unique_id=759938118]
+visible = false
 position = Vector2(-27.142876, 17)
 scale = Vector2(0.7503749, 0.42248884)
 texture = ExtResource("4_41a2b")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Area2D3" unique_id=831936862]
+visible = false
 position = Vector2(27.142859, 17.999998)
 scale = Vector2(0.7309764, 0.43655357)
 texture = ExtResource("4_41a2b")
@@ -149,12 +177,14 @@ scale = Vector2(0.7, 1)
 texture = ExtResource("3_itng5")
 
 [node name="PointLight2D" type="PointLight2D" parent="Area2D6" unique_id=1222313743]
+visible = false
 position = Vector2(-27.142864, 17)
 scale = Vector2(0.6964056, 0.42248884)
 energy = 2.0
 texture = ExtResource("4_41a2b")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Area2D6" unique_id=2082806333]
+visible = false
 position = Vector2(22.857147, 20)
 scale = Vector2(0.76142126, 0.43655357)
 energy = 2.0
@@ -177,11 +207,13 @@ scale = Vector2(0.7, 1)
 texture = ExtResource("3_itng5")
 
 [node name="PointLight2D" type="PointLight2D" parent="Area2D8" unique_id=1746586700]
+visible = false
 position = Vector2(-27.142889, 17.999998)
 scale = Vector2(0.77092236, 0.42248884)
 texture = ExtResource("4_41a2b")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Area2D8" unique_id=803123877]
+visible = false
 position = Vector2(24.285702, 18.999996)
 scale = Vector2(0.9197703, 0.43655357)
 energy = 2.0
@@ -204,11 +236,13 @@ scale = Vector2(0.7, 1)
 texture = ExtResource("3_itng5")
 
 [node name="PointLight2D" type="PointLight2D" parent="Area2D9" unique_id=386108570]
+visible = false
 position = Vector2(-27.142889, 17.999998)
 scale = Vector2(0.77092236, 0.42248884)
 texture = ExtResource("4_41a2b")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Area2D9" unique_id=615726411]
+visible = false
 position = Vector2(24.285702, 18.999996)
 scale = Vector2(0.9197703, 0.43655357)
 energy = 2.0
@@ -231,11 +265,13 @@ scale = Vector2(0.7, 1)
 texture = ExtResource("3_itng5")
 
 [node name="PointLight2D" type="PointLight2D" parent="Area2D10" unique_id=450111347]
+visible = false
 position = Vector2(-27.142889, 17.999998)
 scale = Vector2(0.77092236, 0.42248884)
 texture = ExtResource("4_41a2b")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Area2D10" unique_id=105828954]
+visible = false
 position = Vector2(24.285702, 18.999996)
 scale = Vector2(0.9197703, 0.43655357)
 energy = 2.0
@@ -250,12 +286,14 @@ scale = Vector2(0.7, 1)
 texture = ExtResource("3_itng5")
 
 [node name="PointLight2D" type="PointLight2D" parent="Area2D7" unique_id=1530923022]
+visible = false
 position = Vector2(-27.142849, 17)
 scale = Vector2(0.70339143, 0.42248884)
 energy = 2.0
 texture = ExtResource("4_41a2b")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Area2D7" unique_id=1489359321]
+visible = false
 position = Vector2(24.113401, 18.999998)
 scale = Vector2(0.7055335, 0.43655357)
 texture = ExtResource("4_41a2b")
@@ -273,11 +311,12 @@ position = Vector2(-292, 0)
 scale = Vector2(2, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="Area2D11" unique_id=224748583]
-position = Vector2(289.75, 249.00002)
-scale = Vector2(0.38480398, 0.1139325)
+position = Vector2(278.75, 249.00002)
+scale = Vector2(0.27696085, 0.1139325)
 texture = ExtResource("9_c6fq0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D11" unique_id=1841678519]
-position = Vector2(290, 239)
+position = Vector2(278.24493, 239)
 rotation = 3.1415927
+scale = Vector2(0.63265455, 1)
 texture = ExtResource("9_dx5oe")

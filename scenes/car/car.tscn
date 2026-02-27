@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://byy8nqqxdmeii"]
 
 [ext_resource type="Script" uid="uid://dxdlgjixcw6v6" path="res://scenes/car/car.gd" id="1_yhfra"]
-[ext_resource type="Texture2D" uid="uid://jr65sjtn7pw7" path="res://assets/Car.png" id="2_rytg7"]
+[ext_resource type="Texture2D" uid="uid://fjkgdd7vid2a" path="res://assets/cars.png" id="2_x7uf8"]
 [ext_resource type="AudioStream" uid="uid://b6lvcinyp668" path="res://assets/carmotor.ogg" id="4_x7uf8"]
 [ext_resource type="AudioStream" uid="uid://b4cd2thlejfnh" path="res://assets/crash.ogg" id="5_tcn38"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcn38"]
+atlas = ExtResource("2_x7uf8")
+region = Rect2(2, 2, 12, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhfra"]
 size = Vector2(24, 8)
@@ -28,7 +32,7 @@ max_zoom = 3.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1101533284]
 rotation = 1.5707964
-texture = ExtResource("2_rytg7")
+texture = SubResource("AtlasTexture_tcn38")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=552254806]
 shape = SubResource("RectangleShape2D_yhfra")

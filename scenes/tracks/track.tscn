@@ -1,6 +1,6 @@
-[gd_scene format=4 uid="uid://c75rl5624u2d2"]
+[gd_scene format=3 uid="uid://c75rl5624u2d2"]
 
-[ext_resource type="Texture2D" uid="uid://dm83hv3wtunv2" path="res://assets/tracksheet.png" id="1_6xcl0"]
+[ext_resource type="PackedScene" uid="uid://cyfs43n1pjxhs" path="res://scenes/tracks/track_tiles.tscn" id="1_6xcl0"]
 
 [sub_resource type="GDScript" id="GDScript_af04h"]
 script/source = "extends Node2D
@@ -20,47 +20,11 @@ func _on_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.
 "
 
-[sub_resource type="GDScript" id="GDScript_6xcl0"]
-script/source = "extends Area2D
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6xcl0"]
-bounce = 1.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ur0e5"]
-texture = ExtResource("1_6xcl0")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13.176451, -16, -11.015989, -16, -11.082937, -5.432026, -7.95595, -2.863429, -8.089962, 5.9792433, -11.035897, 7.8541803, -11.1544075, 15.485283, -13.276291, 15.317766, -13.338833, 7.151864, -13.077528, -4.993599)
-0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(11.319473, -16, 13.81319, -16, 14.012688, -8.015816, 16, -5.6218452, 16, 7.6447372, 13.414196, 10.936445, 13.414196, 16, 11.319473, 16, 11.319473, 8.8417225, 14.212185, 6.647251, 14.012688, -3.8263683, 10.920479, -7.0183277)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13.176451, -16, -11.015989, -16, -11.082937, -5.432026, -11.035897, 7.8541803, -11.1544075, 15.485283, -13.276291, 15.317766, -13.338833, 7.151864, -13.077528, -4.993599)
-1:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(11.319473, -16, 13.81319, -16, 14.012688, -8.015816, 13.414196, 10.936445, 13.414196, 16, 11.319473, 16, 11.319473, 8.8417225, 10.920479, -7.0183277)
-2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 11.022621, -12.5570965, 12.251081, -10.993603, 16, -13.394682, 16, -16, 12.92115)
-2:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(-16, -11.110973, -16, -14.870022, 0.52228355, -14.375409, 13.28326, -1.9111996, 13.414196, 16, 11.319473, 16, 11.106972, -0.6252098, 0.42336082, -11.012051)
-
-[sub_resource type="TileSet" id="TileSet_a7tuf"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
-physics_layer_0/physics_material = SubResource("PhysicsMaterial_6xcl0")
-sources/3 = SubResource("TileSetAtlasSource_ur0e5")
-
 [node name="Track" type="Node2D" unique_id=927561726]
 script = SubResource("GDScript_af04h")
 
 [node name="OutOfBounds" type="Area2D" parent="." unique_id=759813340]
 position = Vector2(-1, 4)
-script = SubResource("GDScript_6xcl0")
 
 [node name="ColorRect" type="ColorRect" parent="OutOfBounds" unique_id=38467759]
 offset_left = -469.00003
@@ -69,8 +33,5 @@ offset_right = 535.0
 offset_bottom = 407.0
 color = Color(2.394505e-06, 0.44258443, 0, 1)
 
-[node name="TrackTiles" type="TileMapLayer" parent="." unique_id=38016115]
+[node name="TrackTiles" parent="." unique_id=1978805555 instance=ExtResource("1_6xcl0")]
 position = Vector2(2.3841858e-07, 2)
-rotation = -1.5664315
-tile_map_data = PackedByteArray("AAAAAP7/AwABAAAAAAAAAP3/AwABAAAAAAAAAAEAAwABAAAAAAAAAAIAAwACAAAAADABAAIAAwABAAAAAGABAPz/AwAAAAAAAFAAAPz/AwACAAAAAGAAAP//AwABAAAAAAAAAAAAAwABAAAAAAAEAPz/AwACAAAAAAAEAAIAAwACAAAAAFAEAP3/AwABAAAAADAEAP7/AwABAAAAADAEAP//AwABAAAAADAEAAAAAwABAAAAADAEAAEAAwABAAAAADADAAIAAwABAAAAAFACAAIAAwABAAAAAFACAPz/AwABAAAAAFADAPz/AwABAAAAAFA=")
-tile_set = SubResource("TileSet_a7tuf")

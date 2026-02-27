@@ -1,0 +1,108 @@
+{
+	"textures": [
+		{
+			"image": "cars.png",
+			"size": {
+				"w": 16,
+				"h": 164
+			},
+			"sprites": [
+				{
+					"filename": "Car.png",
+					"region": {
+						"x": 2,
+						"y": 2,
+						"w": 12,
+						"h": 25
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "FinalBoss.png",
+					"region": {
+						"x": 2,
+						"y": 29,
+						"w": 12,
+						"h": 25
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Opponent1.png",
+					"region": {
+						"x": 2,
+						"y": 56,
+						"w": 12,
+						"h": 25
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Opponent2.png",
+					"region": {
+						"x": 2,
+						"y": 83,
+						"w": 12,
+						"h": 25
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Opponent3.png",
+					"region": {
+						"x": 2,
+						"y": 110,
+						"w": 12,
+						"h": 25
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "Opponent4.png",
+					"region": {
+						"x": 2,
+						"y": 137,
+						"w": 12,
+						"h": 25
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:98581b801632cb7fb8777858eeec5d17:33507e859ee8d142fbb648f9f5f87f4b:97d6d62b725fb843ccb8f18eb0a841d5$"
+	}
+}

@@ -32,10 +32,16 @@ func _ready() -> void:
 	$Camera2D.zoom.x = min_zoom
 	$Camera2D.zoom.y = min_zoom
 	curr_zoom = min_zoom
-	position.x = 242.0
-	position.y = 268.0
+	position.x = 301.0
+	position.y = 262.0
 	rotation = 0.0
 	$EnginePlayer.play()
+	
+	var atlas = AtlasTexture.new()
+	atlas.atlas = preload("res://assets/cars.png")
+	atlas.region = Rect2(2,2,12,25)
+	
+	$Sprite2D.texture = atlas
 	
 func reset() -> void:
 	_velocity = 0.0
@@ -74,7 +80,9 @@ func _physics_process(delta: float) -> void:
 		_bounce_tween.set_parallel(false)
 		_bounce_tween.finished.connect(bounce_complete)
 	$ProgressBar.set_value_no_signal((absf(_velocity) / max_speed) * 100.0)
-	
+	if Input.is_action_just_pressed("ui_accept"):
+		print("Vector2(", global_position.x, ", ", global_position.y, ")")
+
 func bounce_complete():
 	await $CrashPlayer.finished
 	$CrashPlayer.stop()

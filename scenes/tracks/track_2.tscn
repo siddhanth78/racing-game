@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://8dnahah6dcxm"]
+
+[ext_resource type="PackedScene" uid="uid://cyfs43n1pjxhs" path="res://scenes/tracks/track_tiles.tscn" id="1_eq8k1"]
+
+[node name="Track2" type="Node2D" unique_id=127915273]
+position = Vector2(570, 302)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=260842774]
+
+[node name="ColorRect" type="ColorRect" parent="Area2D" unique_id=2123447375]
+offset_left = -379.0
+offset_top = -243.0
+offset_right = 387.0
+offset_bottom = 252.0
+color = Color(0.73988664, 0.55113083, 0.88454586, 1)
+
+[node name="TrackTiles" parent="." unique_id=1978805555 instance=ExtResource("1_eq8k1")]
+tile_map_data = PackedByteArray()
