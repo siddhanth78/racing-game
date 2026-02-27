@@ -14,6 +14,7 @@
 [node name="Race1" type="Node2D" unique_id=99033511]
 
 [node name="Track" parent="." unique_id=927561726 instance=ExtResource("1_w1cb2")]
+position = Vector2(306, 281)
 
 [node name="Car" parent="." unique_id=1591443225 instance=ExtResource("2_c6fq0")]
 position = Vector2(225, 269)

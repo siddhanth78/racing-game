@@ -59,7 +59,7 @@ sources/3 = SubResource("TileSetAtlasSource_ur0e5")
 script = SubResource("GDScript_af04h")
 
 [node name="OutOfBounds" type="Area2D" parent="." unique_id=759813340]
-position = Vector2(270.00003, 200.99998)
+position = Vector2(-1, 4)
 script = SubResource("GDScript_6xcl0")
 
 [node name="ColorRect" type="ColorRect" parent="OutOfBounds" unique_id=38467759]
@@ -70,7 +70,7 @@ offset_bottom = 407.0
 color = Color(2.394505e-06, 0.44258443, 0, 1)
 
 [node name="TrackTiles" type="TileMapLayer" parent="." unique_id=38016115]
-position = Vector2(306, 283)
+position = Vector2(2.3841858e-07, 2)
 rotation = -1.5664315
 tile_map_data = PackedByteArray("AAAAAP7/AwABAAAAAAAAAP3/AwABAAAAAAAAAAEAAwABAAAAAAAAAAIAAwACAAAAADABAAIAAwABAAAAAGABAPz/AwAAAAAAAFAAAPz/AwACAAAAAGAAAP//AwABAAAAAAAAAAAAAwABAAAAAAAEAPz/AwACAAAAAAAEAAIAAwACAAAAAFAEAP3/AwABAAAAADAEAP7/AwABAAAAADAEAP//AwABAAAAADAEAAAAAwABAAAAADAEAAEAAwABAAAAADADAAIAAwABAAAAAFACAAIAAwABAAAAAFACAPz/AwABAAAAAFADAPz/AwABAAAAAFA=")
 tile_set = SubResource("TileSet_a7tuf")
