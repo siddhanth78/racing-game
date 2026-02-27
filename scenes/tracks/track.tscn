@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://c75rl5624u2d2"]
 
-[ext_resource type="Script" uid="uid://cw5qy6ymcekr6" path="res://scenes/tracks/out_of_bounds.gd" id="1_4guo7"]
 [ext_resource type="Texture2D" uid="uid://dm83hv3wtunv2" path="res://assets/tracksheet.png" id="1_6xcl0"]
 
 [sub_resource type="GDScript" id="GDScript_af04h"]
@@ -21,8 +20,18 @@ func _on_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4guo7"]
-size = Vector2(370, 280)
+[sub_resource type="GDScript" id="GDScript_6xcl0"]
+script/source = "extends Area2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6xcl0"]
 bounce = 1.0
@@ -51,17 +60,13 @@ script = SubResource("GDScript_af04h")
 
 [node name="OutOfBounds" type="Area2D" parent="." unique_id=759813340]
 position = Vector2(270.00003, 200.99998)
-script = ExtResource("1_4guo7")
+script = SubResource("GDScript_6xcl0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OutOfBounds" unique_id=1110911493]
-position = Vector2(21.49997, 4.0000153)
-shape = SubResource("RectangleShape2D_4guo7")
-
-[node name="ColorRect" type="ColorRect" parent="OutOfBounds/CollisionShape2D" unique_id=38467759]
-offset_left = -185.5
-offset_top = -138.0
-offset_right = 184.5
-offset_bottom = 140.0
+[node name="ColorRect" type="ColorRect" parent="OutOfBounds" unique_id=38467759]
+offset_left = -469.00003
+offset_top = -370.0
+offset_right = 535.0
+offset_bottom = 407.0
 color = Color(2.394505e-06, 0.44258443, 0, 1)
 
 [node name="TrackTiles" type="TileMapLayer" parent="." unique_id=38016115]
@@ -69,5 +74,3 @@ position = Vector2(306, 283)
 rotation = -1.5664315
 tile_map_data = PackedByteArray("AAAAAP7/AwABAAAAAAAAAP3/AwABAAAAAAAAAAEAAwABAAAAAAAAAAIAAwACAAAAADABAAIAAwABAAAAAGABAPz/AwAAAAAAAFAAAPz/AwACAAAAAGAAAP//AwABAAAAAAAAAAAAAwABAAAAAAAEAPz/AwACAAAAAAAEAAIAAwACAAAAAFAEAP3/AwABAAAAADAEAP7/AwABAAAAADAEAP//AwABAAAAADAEAAAAAwABAAAAADAEAAEAAwABAAAAADADAAIAAwABAAAAAFACAAIAAwABAAAAAFACAPz/AwABAAAAAFADAPz/AwABAAAAAFA=")
 tile_set = SubResource("TileSet_a7tuf")
-
-[connection signal="body_entered" from="OutOfBounds" to="OutOfBounds" method="_on_body_entered"]

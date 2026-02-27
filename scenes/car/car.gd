@@ -23,6 +23,7 @@ var _steer := 0.0
 var curr_zoom := 0.0
 var _bounce_tween: Tween
 var _bounce_target := Vector2.ZERO
+var rot_factor := 0.0
 
 var steering := false
 
@@ -50,7 +51,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	var speed_ratio = clamp(_velocity / max_speed, 0.0, 1.0)
 	$EnginePlayer.volume_db = linear_to_db(lerp(0.3, 1.0, speed_ratio))
-	$EnginePlayer.pitch_scale = lerp(1.0, 1.5, speed_ratio)
+	$EnginePlayer.pitch_scale = lerp(0.8, 1.5, speed_ratio)
 	apply_throttle(delta)
 	if _velocity != 0:
 		apply_rotation(delta)
@@ -59,23 +60,25 @@ func _physics_process(delta: float) -> void:
 		set_physics_process(false)
 		$CrashPlayer.volume_db = linear_to_db(lerp(0.3, 1.0, speed_ratio))
 		$CrashPlayer.play()
-		_velocity *= 0.5
-		_bounce_target = position + (-transform.x * 10.0)
+		_bounce_target = position + (-transform.x * 30.0 * sign(_velocity))
+		_velocity = 0
 		if _bounce_tween and _bounce_tween.is_running():
 			_bounce_tween.kill()
-		rotation_degrees = fmod(rotation_degrees, 360.0)
+		rotation_degrees = wrapf(rotation_degrees, 0.0, 360.0)
 		_bounce_tween = create_tween()
 		_bounce_tween.set_parallel()
-		_bounce_tween.tween_property(self, "position", _bounce_target, 0.8)
-		_bounce_tween.tween_property(self, "rotation_degrees", rotation_degrees + 45.0, 0.8)
+		_bounce_tween.tween_property(self, "position", _bounce_target, 0.5)
+		var nearest_90 = round(rotation_degrees / 90.0) * 90.0
+		rot_factor = nearest_90 - rotation_degrees
+		_bounce_tween.tween_property(self, "rotation_degrees", rotation_degrees + rot_factor, 0.8)
 		_bounce_tween.set_parallel(false)
 		_bounce_tween.finished.connect(bounce_complete)
 	$ProgressBar.set_value_no_signal((absf(_velocity) / max_speed) * 100.0)
 	
 func bounce_complete():
-	set_physics_process(true)
 	await $CrashPlayer.finished
 	$CrashPlayer.stop()
+	set_physics_process(true)
 
 func apply_throttle(delta: float) -> void:
 	if _throttle > 0.0 and _velocity >= 0:
