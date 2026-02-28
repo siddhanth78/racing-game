@@ -1,0 +1,32 @@
+{
+    "general_fields": {
+        "cedent_name": "Zurich Insurance Company Ltd",
+        "intermediary": null,
+        "document_date": null,
+        "currency_code": "CHF",
+        "cedent_period": "Q4 2025",
+        "treaty_reference": null,
+        "page_number": 1
+    },
+    "treaty_arrangement": {
+        "treaty_type": "Non-proportional",
+        "arrangement_structure": "non-proportional",
+        "participation_details": []
+    },
+    "business_fields": {
+        "transactions": []
+    },
+    "document_analysis": {
+        "document_type": "summary_totals",
+        "has_year_breakdown": true,
+        "contains_percentage_data": false,
+        "extraction_confidence": "high",
+        "total_pages_processed": 1,
+        "total_sections_processed": 5,
+        "total_treaty_layers_processed": 3,
+        "total_batches_processed": 1
+    },
+    "calculation_analysis": [],
+    "skipped_transactions": [],
+    "skipped_transactions_count": 0
+}

@@ -24,16 +24,13 @@ var curr_zoom := 0.0
 var _bounce_tween: Tween
 var _bounce_target := Vector2.ZERO
 var rot_factor := 0.0
-
-var steering := false
+var end_zoom := min_zoom
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Camera2D.zoom.x = min_zoom
 	$Camera2D.zoom.y = min_zoom
 	curr_zoom = min_zoom
-	position.x = 301.0
-	position.y = 262.0
 	rotation = 0.0
 	$EnginePlayer.play()
 	
@@ -104,12 +101,25 @@ func apply_throttle(delta: float) -> void:
 		else:
 			_velocity -= friction * delta
 			_velocity = maxf(_velocity, 0.0)
-		curr_zoom += szoom_damp * delta
-		curr_zoom = clampf(curr_zoom, speed_zoom, min_zoom)
 			
-	if _throttle != 0.0 and steering == false:
+		if curr_zoom > min_zoom and _steer == 0.0:
+			curr_zoom -= szoom_damp * delta
+		elif curr_zoom < min_zoom and _steer == 0.0:
+			curr_zoom += szoom_damp * delta
+			
+		if curr_zoom > min_zoom:
+			end_zoom = max_zoom
+		else:
+			end_zoom = min_zoom
+		curr_zoom = clampf(curr_zoom, speed_zoom, end_zoom)
+			
+	if abs(_velocity) >= max_speed-50:
 		curr_zoom -= szoom_damp * delta
-		curr_zoom = clampf(curr_zoom, speed_zoom, min_zoom)
+		if curr_zoom > min_zoom:
+			end_zoom = max_zoom
+		else:
+			end_zoom = min_zoom
+		curr_zoom = clampf(curr_zoom, speed_zoom, end_zoom)
 		
 	$Camera2D.zoom.x = curr_zoom
 	$Camera2D.zoom.y = curr_zoom
@@ -124,16 +134,15 @@ func get_steer_factor() -> float:
 	
 func apply_rotation(delta: float) -> void:
 	if _steer == 0.0:
-		if steering:
-			curr_zoom -= zoom_damp * delta
-			curr_zoom = clampf(curr_zoom, speed_zoom, max_zoom)
-			$Camera2D.zoom.x = curr_zoom
-			$Camera2D.zoom.y = curr_zoom
-			if curr_zoom <= min_zoom:
-				steering = false
+		curr_zoom -= szoom_damp * delta
+		curr_zoom = clampf(curr_zoom, speed_zoom, max_zoom)
+		$Camera2D.zoom.x = curr_zoom
+		$Camera2D.zoom.y = curr_zoom
+		if curr_zoom <= min_zoom:
+			end_zoom = min_zoom
 		return
-	steering = true
 	curr_zoom += zoom_damp * delta
+	end_zoom = max_zoom
 	curr_zoom = clampf(curr_zoom, speed_zoom, max_zoom)
 	$Camera2D.zoom.x = curr_zoom
 	$Camera2D.zoom.y = curr_zoom

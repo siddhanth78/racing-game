@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ooet13p4csof"]
+
+[ext_resource type="PackedScene" uid="uid://8dnahah6dcxm" path="res://scenes/tracks/track_2.tscn" id="1_cs2wm"]
+[ext_resource type="PackedScene" uid="uid://byy8nqqxdmeii" path="res://scenes/car/car.tscn" id="2_bdrxv"]
+
+[node name="Race2" type="Node2D" unique_id=467116091]
+
+[node name="Track2" parent="." unique_id=127915273 instance=ExtResource("1_cs2wm")]
+
+[node name="Car" parent="." unique_id=2013520536 instance=ExtResource("2_bdrxv")]
+position = Vector2(612, 410)
+acceleration = 150.0
+friction = 500.0
+max_speed = 400.0
+min_zoom = 6.0
+max_zoom = 8.0

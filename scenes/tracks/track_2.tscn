@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://8dnahah6dcxm"]
+[gd_scene format=4 uid="uid://8dnahah6dcxm"]
 
 [ext_resource type="PackedScene" uid="uid://cyfs43n1pjxhs" path="res://scenes/tracks/track_tiles.tscn" id="1_eq8k1"]
 
@@ -8,11 +8,11 @@ position = Vector2(570, 302)
 [node name="Area2D" type="Area2D" parent="." unique_id=260842774]
 
 [node name="ColorRect" type="ColorRect" parent="Area2D" unique_id=2123447375]
-offset_left = -379.0
-offset_top = -243.0
-offset_right = 387.0
-offset_bottom = 252.0
+offset_left = -620.0
+offset_top = -391.0
+offset_right = 633.0
+offset_bottom = 511.0
 color = Color(0.73988664, 0.55113083, 0.88454586, 1)
 
 [node name="TrackTiles" parent="." unique_id=1978805555 instance=ExtResource("1_eq8k1")]
-tile_map_data = PackedByteArray()
+tile_map_data = PackedByteArray("AAD8//v/AwABAAAAAAD8//z/AwABAAAAAAD8//3/AwABAAAAAAD8//7/AwABAAAAAAD8////AwABAAAAAAD8/wAAAwABAAAAAAD8/wEAAwABAAAAAAD8/wIAAwABAAAAAAD8/wMAAwABAAAAAAD8/wQAAwABAAAAAAD8/wUAAwABAAAAAAD8/wYAAwACAAAAADD9/wYAAwABAAAAAHD+/wYAAwACAAAAAFD+/wUAAwABAAAAAAD+/wQAAwACAAAAABD//wQAAwABAAAAAEAAAAQAAwACAAAAAHAAAAUAAwABAAAAAAAAAAYAAwACAAAAADABAAYAAwABAAAAAEACAAYAAwACAAAAAFACAAUAAwABAAAAAAACAAQAAwABAAAAAAACAAMAAwABAAAAAAACAAIAAwABAAAAAAACAAEAAwABAAAAAAACAAAAAwACAAAAAAABAAAAAwABAAAAAFAAAAAAAwACAAAAAEAAAP//AwABAAAAAAAAAP7/AwABAAAAAAAAAP3/AwABAAAAAAAAAPz/AwACAAAAABABAPz/AwABAAAAAFACAPz/AwACAAAAAFACAPv/AwABAAAAAAACAPr/AwACAAAAAAABAPr/AwABAAAAAFAAAPr/AwABAAAAAFD///r/AwABAAAAAFD+//r/AwACAAAAAED+//n/AwACAAAAAAD9//n/AwAAAAAAAFD8//n/AwACAAAAAGD8//r/AwAAAAAAAAA=")

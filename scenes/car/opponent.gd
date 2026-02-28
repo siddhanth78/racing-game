@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var min_steer_factor := 0.5
 
 const WAYPOINTS = [
-	{"pos": Vector2(362.804992675781, 271.377777099609), "type": "corner"},
+	{"pos": Vector2(362.804992675781, 271.377777099609), "type": "road"},
 	{"pos": Vector2(381.580749511719, 268.703582763672), "type": "corner"},
 	{"pos": Vector2(391.826904296875, 256.802551269531), "type": "corner"},
 	{"pos": Vector2(391.234924316406, 217.768356323242), "type": "road"},
