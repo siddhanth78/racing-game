@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://byy8nqqxdmeii"]
 
-[ext_resource type="Script" uid="uid://dxdlgjixcw6v6" path="res://scenes/car/car.gd" id="1_yhfra"]
+[ext_resource type="Script" uid="uid://dxdlgjixcw6v6" path="res://scripts/car.gd" id="1_yhfra"]
 [ext_resource type="Texture2D" uid="uid://fjkgdd7vid2a" path="res://assets/cars.png" id="2_x7uf8"]
 [ext_resource type="AudioStream" uid="uid://b6lvcinyp668" path="res://assets/carmotor.ogg" id="4_x7uf8"]
 [ext_resource type="AudioStream" uid="uid://b4cd2thlejfnh" path="res://assets/crash.ogg" id="5_tcn38"]
@@ -23,6 +23,8 @@ thickness = 2
 [node name="Car" type="CharacterBody2D" unique_id=2013520536]
 position = Vector2(114, 65)
 scale = Vector2(0.25, 0.25)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_yhfra")
 acceleration = 100.0
 max_speed = 350.0

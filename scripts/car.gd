@@ -13,6 +13,13 @@ extends CharacterBody2D
 @export var szoom_damp := 0.5
 @export var speed_zoom := 4.0
 
+@export var last_cpx := 0.0
+@export var last_cpy := 0.0
+@export var last_cprot := 0.0
+@export var lap_ := 1
+@export var cp_ := -1
+@export var pos_ := 1
+
 var min_clamp := 0.0
 var max_clamp := 0.0
 
@@ -26,8 +33,12 @@ var _bounce_target := Vector2.ZERO
 var rot_factor := 0.0
 var end_zoom := min_zoom
 
+var can_input = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group("car")
+	add_to_group("player")
 	$Camera2D.zoom.x = min_zoom
 	$Camera2D.zoom.y = min_zoom
 	curr_zoom = min_zoom
@@ -48,10 +59,27 @@ func reset() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	_throttle = Input.get_action_strength("accelerate") - Input.get_action_strength("deccelerate")
-	_steer = Input.get_axis("steer_left", "steer_right")
+	if can_input:
+		_throttle = Input.get_action_strength("accelerate") - Input.get_action_strength("deccelerate")
+		_steer = Input.get_axis("steer_left", "steer_right")
+		
+		if Input.is_action_just_pressed("reset_player") and cp_ != -1:
+			position.x = last_cpx
+			position.y = last_cpy
+			rotation = last_cprot
 	
 func _physics_process(delta: float) -> void:
+	if lap_ > 3:
+		_velocity = 0.0
+		_throttle = 0.0
+		_steer = 0.0
+		can_input = false
+		$EnginePlayer.stop()
+		$ProgressBar.set_value_no_signal(0.0)
+		set_physics_process(false)
+		set_process(false)
+		return
+		
 	var speed_ratio = clamp(_velocity / max_speed, 0.0, 1.0)
 	$EnginePlayer.volume_db = linear_to_db(lerp(0.3, 1.0, speed_ratio))
 	$EnginePlayer.pitch_scale = lerp(0.8, 1.5, speed_ratio)

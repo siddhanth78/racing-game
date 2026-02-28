@@ -1,27 +1,20 @@
 [gd_scene format=3 uid="uid://c75rl5624u2d2"]
 
 [ext_resource type="PackedScene" uid="uid://cyfs43n1pjxhs" path="res://scenes/tracks/track_tiles.tscn" id="1_6xcl0"]
+[ext_resource type="Script" uid="uid://cwr26o8ubcx6y" path="res://scripts/track.gd" id="1_868s6"]
+[ext_resource type="FontFile" uid="uid://jviekg3j0w8t" path="res://Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="2_4guo7"]
+[ext_resource type="Texture2D" uid="uid://brp16wlmlqskk" path="res://assets/FinishLine.png" id="2_af04h"]
 
-[sub_resource type="GDScript" id="GDScript_af04h"]
-script/source = "extends Node2D
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xcl0"]
+size = Vector2(7, 51)
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
-"
+[sub_resource type="LabelSettings" id="LabelSettings_af04h"]
+font = ExtResource("2_4guo7")
+outline_size = 6
+outline_color = Color(0.0045364476, 0.004536448, 0.0045364476, 1)
 
 [node name="Track" type="Node2D" unique_id=927561726]
-script = SubResource("GDScript_af04h")
+script = ExtResource("1_868s6")
 
 [node name="OutOfBounds" type="Area2D" parent="." unique_id=759813340]
 position = Vector2(-1, 4)
@@ -35,3 +28,70 @@ color = Color(2.394505e-06, 0.44258443, 0, 1)
 
 [node name="TrackTiles" parent="." unique_id=1978805555 instance=ExtResource("1_6xcl0")]
 position = Vector2(2.3841858e-07, 2)
+
+[node name="cp1" type="Area2D" parent="." unique_id=1332447578]
+position = Vector2(58, -13)
+collision_layer = 12
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cp1" unique_id=1787044721]
+shape = SubResource("RectangleShape2D_6xcl0")
+
+[node name="cp2" type="Area2D" parent="." unique_id=363181519]
+position = Vector2(80, -86)
+rotation = 1.5809535
+collision_layer = 12
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cp2" unique_id=302041331]
+shape = SubResource("RectangleShape2D_6xcl0")
+
+[node name="cp3" type="Area2D" parent="." unique_id=1096881114]
+position = Vector2(-43.000004, -141)
+rotation = 3.1372914
+collision_layer = 12
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cp3" unique_id=1593365360]
+shape = SubResource("RectangleShape2D_6xcl0")
+
+[node name="cp4" type="Area2D" parent="." unique_id=78929944]
+position = Vector2(-113, -62)
+rotation = 4.711295
+collision_layer = 12
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cp4" unique_id=587938531]
+shape = SubResource("RectangleShape2D_6xcl0")
+
+[node name="race_line" type="Area2D" parent="." unique_id=439537794]
+position = Vector2(18.999998, -12)
+rotation = 3.1430528
+collision_layer = 12
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="race_line" unique_id=1198242030]
+position = Vector2(0, 1.9073486e-06)
+shape = SubResource("RectangleShape2D_6xcl0")
+
+[node name="TextureRect" type="TextureRect" parent="race_line" unique_id=614162690]
+offset_left = 2.9853928
+offset_top = -10.004368
+offset_right = 26.985394
+offset_bottom = -3.1432037
+rotation = 1.5716232
+texture = ExtResource("2_af04h")
+
+[node name="Label" type="Label" parent="." unique_id=910439413]
+offset_left = 6.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = -25.0
+text = "LAP 1"
+label_settings = SubResource("LabelSettings_af04h")
+
+[connection signal="body_entered" from="cp1" to="." method="_on_cp_1_body_entered"]
+[connection signal="body_entered" from="cp2" to="." method="_on_cp_2_body_entered"]
+[connection signal="body_entered" from="cp3" to="." method="_on_cp_3_body_entered"]
+[connection signal="body_entered" from="cp4" to="." method="_on_cp_4_body_entered"]
+[connection signal="body_entered" from="race_line" to="." method="_on_race_line_body_entered"]

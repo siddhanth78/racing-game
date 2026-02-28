@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://d0kp7y4127ncu"]
+
+[node name="FinishRace" type="CanvasLayer" unique_id=1985314182]
+process_mode = 3
+
+[node name="place1" type="Label" parent="." unique_id=1515692998]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="place2" type="Label" parent="." unique_id=479518349]
+offset_right = 40.0
+offset_bottom = 23.0

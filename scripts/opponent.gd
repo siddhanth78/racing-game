@@ -7,32 +7,16 @@ extends CharacterBody2D
 @export var steer_strength := 6.0
 @export var min_steer_factor := 0.5
 
-const WAYPOINTS = [
-	{"pos": Vector2(362.804992675781, 271.377777099609), "type": "road"},
-	{"pos": Vector2(381.580749511719, 268.703582763672), "type": "corner"},
-	{"pos": Vector2(391.826904296875, 256.802551269531), "type": "corner"},
-	{"pos": Vector2(391.234924316406, 217.768356323242), "type": "road"},
-	{"pos": Vector2(393.590881347656, 169.112182617188), "type": "road"},
-	{"pos": Vector2(391.419128417969, 155.769378662109), "type": "corner"},
-	{"pos": Vector2(385.429443359375, 142.070129394531), "type": "corner"},
-	{"pos": Vector2(373.606994628906, 135.575286865234), "type": "corner"},
-	{"pos": Vector2(328.147979736328, 136.315139770508), "type": "road"},
-	{"pos": Vector2(253.002166748047, 137.284072875977), "type": "road"},
-	{"pos": Vector2(208.825744628906, 135.621704101562), "type": "corner"},
-	{"pos": Vector2(193.865463256836, 144.645904541016), "type": "corner"},
-	{"pos": Vector2(190.004180908203, 161.404251098633), "type": "corner"},
-	{"pos": Vector2(187.741439819336, 196.979019165039), "type": "road"},
-	{"pos": Vector2(192.757278442383, 234.125106811523), "type": "road"},
-	{"pos": Vector2(190.821228027344, 249.943634033203), "type": "corner"},
-	{"pos": Vector2(192.670883178711, 263.547698974609), "type": "corner"},
-	{"pos": Vector2(209.744720458984, 273.665710449219), "type": "corner"},
-	{"pos": Vector2(241.217330932617, 271.417205810547), "type": "road"},
-	{"pos": Vector2(312.322387695312, 269.853546142578), "type": "road"},
-]
-
 @export var SLOW_RADIUS := 50.0
 const ARRIVE_RADIUS := 25.0
 @export var SLOW_SPEED := 50.0
+
+@export var last_cpx := 0.0
+@export var last_cpy := 0.0
+@export var last_cprot := 0.0
+@export var lap_ := 1
+@export var cp_ := 0
+@export var pos_ := 1
 
 var _velocity := 0.0
 var current_waypoint: int = 0
@@ -41,16 +25,52 @@ var _wobble_timer: float = 0.0
 var _wobble_interval: float = 0.0
 var _wobble_offset: float = 0.0
 
+var WAYPOINTS = []
+
 func _ready() -> void:
+	add_to_group("car")
 	_velocity = 0.0
-	position = Vector2(301.0, 273.0)
+	WAYPOINTS = load_track_from_json("res://waypoints/track1.json")
 	_wobble_interval = randf_range(1.0, 3.0)
 	var atlas = AtlasTexture.new()
 	atlas.atlas = preload("res://assets/cars.png")
 	atlas.region = Rect2(2, 56, 12, 25)
 	$Sprite2D.texture = atlas
+	set_physics_process(false)
+	await get_tree().create_timer(0.4).timeout
+	set_physics_process(true)
+	
+func load_track_from_json(path) -> Array:
+	if not FileAccess.file_exists(path):
+		print("Track file not found: ", path)
+		return []
+	
+	var file = FileAccess.open(path, FileAccess.READ)
+	var data = JSON.parse_string(file.get_as_text())
+	file.close()
+	
+	if not data:
+		print("Failed to parse track JSON")
+		return []
+	
+	var track_points = []
+	for point in data:
+		track_points.append({
+			"pos": Vector2(point["pos"]["x"], point["pos"]["y"]),
+			"type": point["type"]
+		})
+	
+	return track_points
 
 func _physics_process(delta: float) -> void:
+	if lap_ > 3:
+		print("STOPPING")
+		_velocity = 0.0
+		velocity = Vector2.ZERO
+		set_physics_process(false)
+		set_process(false)
+		return
+		
 	var target = WAYPOINTS[current_waypoint]["pos"]
 	var to_target = target - global_position
 	var dist = to_target.length()
