@@ -37,7 +37,7 @@ func _ready() -> void:
 	atlas.region = Rect2(2, 56, 12, 25)
 	$Sprite2D.texture = atlas
 	set_physics_process(false)
-	await get_tree().create_timer(0.4).timeout
+	await get_tree().create_timer(6.5).timeout
 	set_physics_process(true)
 	
 func load_track_from_json(path) -> Array:

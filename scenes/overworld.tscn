@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cm1b43rub0t6n"]
+
+[ext_resource type="PackedScene" uid="uid://byy8nqqxdmeii" path="res://scenes/car/car.tscn" id="1_m1b5j"]
+
+[node name="Overworld" type="Node2D" unique_id=286950489]
+
+[node name="Car" parent="." unique_id=2013520536 instance=ExtResource("1_m1b5j")]

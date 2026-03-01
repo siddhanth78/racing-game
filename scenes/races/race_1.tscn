@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://y6ku1oq4wag2"]
 
+[ext_resource type="Script" uid="uid://bw5oh1nfqecw8" path="res://scripts/race_1.gd" id="1_41a2b"]
 [ext_resource type="PackedScene" uid="uid://c75rl5624u2d2" path="res://scenes/tracks/track.tscn" id="1_w1cb2"]
 [ext_resource type="PackedScene" uid="uid://byy8nqqxdmeii" path="res://scenes/car/car.tscn" id="2_c6fq0"]
 [ext_resource type="PackedScene" uid="uid://d12yxdsdjtwyb" path="res://scenes/car/opponent.tscn" id="2_itng5"]
@@ -12,13 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://dwtjdxswuppgj" path="res://pointlight2d.jpeg" id="9_c6fq0"]
 [ext_resource type="Texture2D" uid="uid://co15fblymcx64" path="res://assets/Shed.png" id="9_dx5oe"]
 
-[sub_resource type="Curve2D" id="Curve2D_itng5"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 78, -2, 0, 0, 0, 0, 91, -17, 0, 0, 0, 0, 86, -129, 0, 0, 0, 0, 75, -136, 0, 0, 0, 0, -96, -130, 0, 0, 0, 0, -111, -117, 0, 0, 0, 0, -110, -16, 0, 0, 0, 0, -93, -8, 0, 0, 0, 0, 0, 0)
-}
-point_count = 10
-
 [node name="Race1" type="Node2D" unique_id=99033511]
+script = ExtResource("1_41a2b")
 
 [node name="Track" parent="." unique_id=927561726 instance=ExtResource("1_w1cb2")]
 position = Vector2(306, 281)
@@ -28,10 +24,6 @@ acceleration = 50.0
 max_speed = 300.0
 SLOW_RADIUS = 75.0
 SLOW_SPEED = 30.0
-
-[node name="Path2D" type="Path2D" parent="." unique_id=1061158620]
-position = Vector2(301, 273)
-curve = SubResource("Curve2D_itng5")
 
 [node name="Car" parent="." unique_id=1591443225 instance=ExtResource("2_c6fq0")]
 position = Vector2(301, 262)

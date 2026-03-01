@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://dqwvxnw0nqgtr"
 
+[autoload]
+
+GamestateManager="*uid://wdmih5totcr3"
+
 [display]
 
 window/stretch/mode="canvas_items"

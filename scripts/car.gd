@@ -51,6 +51,12 @@ func _ready() -> void:
 	
 	$Sprite2D.texture = atlas
 	
+	set_process(false)
+	set_physics_process(false)
+	await get_tree().create_timer(6.5).timeout
+	set_process(true)
+	set_physics_process(true)
+	
 func reset() -> void:
 	_velocity = 0.0
 	velocity = Vector2.ZERO

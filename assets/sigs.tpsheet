@@ -1,0 +1,93 @@
+{
+	"textures": [
+		{
+			"image": "sigs.png",
+			"size": {
+				"w": 109,
+				"h": 41
+			},
+			"sprites": [
+				{
+					"filename": "sig0.png",
+					"region": {
+						"x": 5,
+						"y": 5,
+						"w": 15,
+						"h": 31
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sig1.png",
+					"region": {
+						"x": 26,
+						"y": 5,
+						"w": 15,
+						"h": 31
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sig2.png",
+					"region": {
+						"x": 47,
+						"y": 5,
+						"w": 15,
+						"h": 31
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "sig3.png",
+					"region": {
+						"x": 68,
+						"y": 5,
+						"w": 15,
+						"h": 31
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "siggo.png",
+					"region": {
+						"x": 89,
+						"y": 5,
+						"w": 15,
+						"h": 31
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:eaa2ba0dc06e6a240e67f0326b5cf59a:43b1d7f9fcbf7ff4a095064a261da5e9:b51a350ddd9cb8f3906c9aef3bca6a6a$"
+	}
+}

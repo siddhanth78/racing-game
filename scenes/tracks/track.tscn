@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://cwr26o8ubcx6y" path="res://scripts/track.gd" id="1_868s6"]
 [ext_resource type="FontFile" uid="uid://jviekg3j0w8t" path="res://Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="2_4guo7"]
 [ext_resource type="Texture2D" uid="uid://brp16wlmlqskk" path="res://assets/FinishLine.png" id="2_af04h"]
+[ext_resource type="Texture2D" uid="uid://c0xxox7hxi0js" path="res://assets/sigs.png" id="5_a4lfa"]
+[ext_resource type="AudioStream" uid="uid://dy46txc8x8ako" path="res://assets/start_horn.ogg" id="6_0vels"]
+[ext_resource type="AudioStream" uid="uid://keka88p12qhq" path="res://assets/sig_click.ogg" id="7_4r41s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6xcl0"]
 size = Vector2(7, 51)
@@ -12,6 +15,10 @@ size = Vector2(7, 51)
 font = ExtResource("2_4guo7")
 outline_size = 6
 outline_color = Color(0.0045364476, 0.004536448, 0.0045364476, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vels"]
+atlas = ExtResource("5_a4lfa")
+region = Rect2(4, 4, 17, 33)
 
 [node name="Track" type="Node2D" unique_id=927561726]
 script = ExtResource("1_868s6")
@@ -89,6 +96,42 @@ offset_right = 45.0
 offset_bottom = -25.0
 text = "LAP 1"
 label_settings = SubResource("LabelSettings_af04h")
+
+[node name="sig" type="Area2D" parent="." unique_id=2080509120]
+position = Vector2(31, -13)
+rotation = 1.5731535
+
+[node name="Sprite2D" type="Sprite2D" parent="sig" unique_id=1803641532]
+position = Vector2(5.9999833, -0.014142275)
+scale = Vector2(0.40672392, 0.36206147)
+
+[node name="sig2" type="Area2D" parent="." unique_id=1612291429]
+position = Vector2(30.999998, -24)
+rotation = 1.5731535
+
+[node name="Sprite2D" type="Sprite2D" parent="sig2" unique_id=46139654]
+position = Vector2(2.999992, -0.007072687)
+scale = Vector2(0.40672392, 0.36206147)
+texture = SubResource("AtlasTexture_0vels")
+
+[node name="sig3" type="Area2D" parent="." unique_id=622901463]
+position = Vector2(30.999998, -16.999996)
+rotation = 1.5731535
+
+[node name="Sprite2D" type="Sprite2D" parent="sig3" unique_id=1789471857]
+position = Vector2(2.999988, -0.0070726275)
+scale = Vector2(0.40672392, 0.36206147)
+texture = SubResource("AtlasTexture_0vels")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1293122841]
+stream = ExtResource("6_0vels")
+pitch_scale = 2.0
+bus = &"Crowd"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=443140230]
+stream = ExtResource("7_4r41s")
+pitch_scale = 0.5
+bus = &"Engine"
 
 [connection signal="body_entered" from="cp1" to="." method="_on_cp_1_body_entered"]
 [connection signal="body_entered" from="cp2" to="." method="_on_cp_2_body_entered"]
