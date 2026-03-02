@@ -21,12 +21,10 @@ script = ExtResource("1_v26us")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1212654595]
 position = Vector2(0.125, 0.5)
 rotation = 1.5707964
-scale = Vector2(0.25, 0.25)
 texture = SubResource("AtlasTexture_b17a5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1185069469]
 light_mask = 2
 visibility_layer = 2
 position = Vector2(0.125, 0.5)
-scale = Vector2(0.25, 0.25)
 shape = SubResource("RectangleShape2D_v26us")

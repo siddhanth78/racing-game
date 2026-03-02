@@ -20,16 +20,14 @@ script = ExtResource("1_41a2b")
 position = Vector2(306, 281)
 
 [node name="Opponent" parent="." unique_id=1563058585 instance=ExtResource("2_itng5")]
-acceleration = 50.0
+acceleration = 100.0
 max_speed = 300.0
 SLOW_RADIUS = 75.0
-SLOW_SPEED = 30.0
+SLOW_SPEED = 100.0
 
 [node name="Car" parent="." unique_id=1591443225 instance=ExtResource("2_c6fq0")]
 position = Vector2(301, 262)
-acceleration = 150.0
-min_zoom = 6.0
-max_zoom = 8.0
+set_timer = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=657752109]
 position = Vector2(237, 108)

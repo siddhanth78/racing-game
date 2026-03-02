@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-@export var acceleration := 150.0
-@export var rev_acceleration := 75.0
+@export var acceleration := 60.0
+@export var rev_acceleration := 50.0
 @export var friction := 300.0
-@export var max_speed := 400.0
-@export var steer_strength := 6.0
+@export var max_speed := 600.0
+@export var steer_strength := 2.0
 @export var min_steer_factor := 0.5
 
 @export var min_zoom := 6.0
@@ -19,6 +19,7 @@ extends CharacterBody2D
 @export var lap_ := 1
 @export var cp_ := -1
 @export var pos_ := 1
+@export var set_timer = false
 
 var min_clamp := 0.0
 var max_clamp := 0.0
@@ -33,12 +34,22 @@ var _bounce_target := Vector2.ZERO
 var rot_factor := 0.0
 var end_zoom := min_zoom
 
+@export var gear_thresholds: Array[float] = [0.0, 150.0, 300.0, 450.0, 600]
+@export var min_pitch := 1.0
+@export var max_pitch := 2.2
+
+var current_gear := 0
+var last_gear := 0
+
+var nearest_90 = 0.0
+
 var can_input = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("car")
 	add_to_group("player")
+	end_zoom = min_zoom
 	$Camera2D.zoom.x = min_zoom
 	$Camera2D.zoom.y = min_zoom
 	curr_zoom = min_zoom
@@ -51,17 +62,48 @@ func _ready() -> void:
 	
 	$Sprite2D.texture = atlas
 	
-	set_process(false)
-	set_physics_process(false)
-	await get_tree().create_timer(6.5).timeout
-	set_process(true)
-	set_physics_process(true)
+	if set_timer == true:
+		set_process(false)
+		set_physics_process(false)
+		await get_tree().create_timer(6.5).timeout
+		set_process(true)
+		set_physics_process(true)
 	
 func reset() -> void:
 	_velocity = 0.0
 	velocity = Vector2.ZERO
 	rotation = 0.0
 	call_deferred("set_position", Vector2(242.0, 268.0))
+
+func update_engine_sound(delta: float) -> void:
+	var abs_vel = abs(_velocity)
+
+	var target_gear = 0
+	for i in range(gear_thresholds.size() - 1):
+		if abs_vel >= gear_thresholds[i]:
+			target_gear = i
+	
+	current_gear = target_gear
+
+	if current_gear != last_gear:
+		if current_gear < last_gear:
+			$EnginePlayer.pitch_scale = min_pitch 
+			
+		last_gear = current_gear
+
+	var gear_start = gear_thresholds[current_gear]
+	var gear_end = gear_thresholds[current_gear + 1]
+	var gear_progress = clamp((abs_vel - gear_start) / (gear_end - gear_start), 0.0, 1.0)
+
+	var target_pitch = lerp(min_pitch, max_pitch, gear_progress)
+	if _throttle <= 0:
+		target_pitch = lerp(min_pitch, max_pitch * 0.5, gear_progress)
+
+	# Smooth the shift
+	$EnginePlayer.pitch_scale = lerp($EnginePlayer.pitch_scale, target_pitch, 10.0 * delta)
+
+	var target_vol = lerp(0.4, 1.0, gear_progress)
+	$EnginePlayer.volume_db = linear_to_db(target_vol)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -85,17 +127,16 @@ func _physics_process(delta: float) -> void:
 		set_physics_process(false)
 		set_process(false)
 		return
-		
-	var speed_ratio = clamp(_velocity / max_speed, 0.0, 1.0)
-	$EnginePlayer.volume_db = linear_to_db(lerp(0.3, 1.0, speed_ratio))
-	$EnginePlayer.pitch_scale = lerp(0.8, 1.5, speed_ratio)
+
+	update_engine_sound(delta)
 	apply_throttle(delta)
+	
 	if _velocity != 0:
 		apply_rotation(delta)
 	position += transform.x * delta * _velocity
 	if move_and_slide():
 		set_physics_process(false)
-		$CrashPlayer.volume_db = linear_to_db(lerp(0.3, 1.0, speed_ratio))
+		$CrashPlayer.volume_db = linear_to_db(clampf(abs(_velocity) / max_speed, 0.2, 1.0))
 		$CrashPlayer.play()
 		_bounce_target = position + (-transform.x * 30.0 * sign(_velocity))
 		_velocity = 0
@@ -105,7 +146,7 @@ func _physics_process(delta: float) -> void:
 		_bounce_tween = create_tween()
 		_bounce_tween.set_parallel()
 		_bounce_tween.tween_property(self, "position", _bounce_target, 0.5)
-		var nearest_90 = round(rotation_degrees / 90.0) * 90.0
+		nearest_90 = round(rotation_degrees / 90.0) * 90.0
 		rot_factor = nearest_90 - rotation_degrees
 		_bounce_tween.tween_property(self, "rotation_degrees", rotation_degrees + rot_factor, 0.8)
 		_bounce_tween.set_parallel(false)

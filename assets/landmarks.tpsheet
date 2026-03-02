@@ -1,0 +1,93 @@
+{
+	"textures": [
+		{
+			"image": "landmarks.png",
+			"size": {
+				"w": 101,
+				"h": 63
+			},
+			"sprites": [
+				{
+					"filename": "stadium.png",
+					"region": {
+						"x": 3,
+						"y": 3,
+						"w": 32,
+						"h": 32
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "garage.png",
+					"region": {
+						"x": 3,
+						"y": 39,
+						"w": 32,
+						"h": 21
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "big_house.png",
+					"region": {
+						"x": 39,
+						"y": 3,
+						"w": 30,
+						"h": 28
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "thunderclub.png",
+					"region": {
+						"x": 39,
+						"y": 35,
+						"w": 32,
+						"h": 23
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "fancy.png",
+					"region": {
+						"x": 73,
+						"y": 3,
+						"w": 25,
+						"h": 20
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:336eddd9239477edf36559df2ce3540f:856aac4e6012bb6bf6ff193513507858:a542484beb8ebf95705bc279734be662$"
+	}
+}
