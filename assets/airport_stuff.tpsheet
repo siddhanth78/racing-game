@@ -1,0 +1,78 @@
+{
+	"textures": [
+		{
+			"image": "airport_stuff.png",
+			"size": {
+				"w": 74,
+				"h": 63
+			},
+			"sprites": [
+				{
+					"filename": "air2.png",
+					"region": {
+						"x": 4,
+						"y": 4,
+						"w": 32,
+						"h": 32
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "airport.png",
+					"region": {
+						"x": 4,
+						"y": 41,
+						"w": 31,
+						"h": 18
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "tower.png",
+					"region": {
+						"x": 40,
+						"y": 41,
+						"w": 16,
+						"h": 15
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "plane.png",
+					"region": {
+						"x": 41,
+						"y": 4,
+						"w": 29,
+						"h": 31
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:653548662cc1c89a7b72bf8ab408be60:80d85e2eefdcb867faefc1b4a2dade8d:943c8cc1d8e2e29764d8952db4b8e31d$"
+	}
+}
