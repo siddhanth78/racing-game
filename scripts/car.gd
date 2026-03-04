@@ -38,6 +38,9 @@ var end_zoom := min_zoom
 @export var min_pitch := 1.0
 @export var max_pitch := 2.2
 
+@export var cam_offset_strength := 150.0
+@export var cam_offset_damp := 50.0
+
 var current_gear := 0
 var last_gear := 0
 
@@ -68,7 +71,11 @@ func _ready() -> void:
 		await get_tree().create_timer(6.5).timeout
 		set_process(true)
 		set_physics_process(true)
-	
+
+func update_camera_offset(delta: float) -> void:
+	var target_offset: Vector2 = transform.x * (_velocity / max_speed) * cam_offset_strength
+	$Camera2D.offset = $Camera2D.offset.lerp(target_offset, cam_offset_damp * delta)
+
 func reset() -> void:
 	_velocity = 0.0
 	velocity = Vector2.ZERO
@@ -130,6 +137,7 @@ func _physics_process(delta: float) -> void:
 
 	update_engine_sound(delta)
 	apply_throttle(delta)
+	update_camera_offset(delta)
 	
 	if _velocity != 0:
 		apply_rotation(delta)

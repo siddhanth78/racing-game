@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://hgam45t8yk8e"]
+
+[ext_resource type="Script" uid="uid://bh3f87ylk2fhd" path="res://scripts/sub_viewport.gd" id="1_dsx0k"]
+[ext_resource type="Script" uid="uid://4jldaamd07ei" path="res://scripts/minimap.gd" id="1_w8tna"]
+[ext_resource type="Script" uid="uid://wkwwocl6ltom" path="res://scripts/viewportcam.gd" id="2_w8tna"]
+[ext_resource type="Script" uid="uid://dyyudox2jg4fk" path="res://scripts/miniarea.gd" id="3_mttn5"]
+[ext_resource type="Script" uid="uid://b3m181nf7heyx" path="res://scripts/playermini.gd" id="4_e3hpa"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fkyvp"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ha27p"]
+size = Vector2(198, 200)
+
+[node name="minimap" type="CanvasLayer" unique_id=1144442252]
+script = ExtResource("1_w8tna")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=39652401]
+size = Vector2i(200, 200)
+script = ExtResource("1_dsx0k")
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport" unique_id=1645732057]
+ignore_rotation = false
+script = ExtResource("2_w8tna")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=962680954]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("3_mttn5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1256944292]
+position = Vector2(100, 100)
+rotation = -1.5707964
+texture = SubResource("ViewportTexture_fkyvp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=218721306]
+position = Vector2(100, 100)
+shape = SubResource("RectangleShape2D_ha27p")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=64213079]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("4_e3hpa")
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D2" unique_id=1244272443]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 1)
+
+[connection signal="entered" from="Area2D" to="Sprite2D2" method="_on_area_2d_entered"]
+[connection signal="exited" from="Area2D" to="Sprite2D2" method="_on_area_2d_exited"]

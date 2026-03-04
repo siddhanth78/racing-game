@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://4amnpoomj34" path="res://assets/vibes.mp3" id="8_fanqn"]
 [ext_resource type="Texture2D" uid="uid://dwtjdxswuppgj" path="res://pointlight2d.jpeg" id="9_c6fq0"]
 [ext_resource type="Texture2D" uid="uid://co15fblymcx64" path="res://assets/Shed.png" id="9_dx5oe"]
+[ext_resource type="PackedScene" uid="uid://hgam45t8yk8e" path="res://scenes/minimap.tscn" id="13_03ixw"]
 
 [node name="Race1" type="Node2D" unique_id=99033511]
 script = ExtResource("1_41a2b")
@@ -21,7 +22,6 @@ position = Vector2(306, 281)
 
 [node name="Opponent" parent="." unique_id=1563058585 instance=ExtResource("2_itng5")]
 acceleration = 100.0
-max_speed = 300.0
 SLOW_RADIUS = 75.0
 SLOW_SPEED = 100.0
 
@@ -290,3 +290,7 @@ position = Vector2(278.24493, 239)
 rotation = 3.1415927
 scale = Vector2(0.63265455, 1)
 texture = ExtResource("9_dx5oe")
+
+[node name="minimap" parent="." unique_id=1144442252 instance=ExtResource("13_03ixw")]
+tile_size = 32.0
+padding = 5.0
