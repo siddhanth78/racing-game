@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cyfuf5ua0hh5o"]
+
+[ext_resource type="Script" uid="uid://d1020uouvoivp" path="res://scripts/signal.gd" id="1_8mtk7"]
+[ext_resource type="Texture2D" uid="uid://c0xxox7hxi0js" path="res://assets/sigs.png" id="2_uikrl"]
+[ext_resource type="AudioStream" uid="uid://dy46txc8x8ako" path="res://assets/start_horn.ogg" id="3_x7afv"]
+[ext_resource type="AudioStream" uid="uid://keka88p12qhq" path="res://assets/sig_click.ogg" id="4_x3ik8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vels"]
+atlas = ExtResource("2_uikrl")
+region = Rect2(4, 4, 17, 33)
+
+[node name="signal" type="Node2D" unique_id=530841040]
+script = ExtResource("1_8mtk7")
+
+[node name="sig" type="Area2D" parent="." unique_id=1626096858]
+position = Vector2(31, -13)
+rotation = 1.5731535
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Sprite2D" type="Sprite2D" parent="sig" unique_id=895621683]
+position = Vector2(5.9999833, -0.014142275)
+scale = Vector2(0.40672392, 0.36206147)
+
+[node name="sig2" type="Area2D" parent="." unique_id=1446861547]
+position = Vector2(30.999998, -23.999998)
+rotation = 1.5731535
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Sprite2D" type="Sprite2D" parent="sig2" unique_id=792384613]
+position = Vector2(2.999992, -0.007072687)
+scale = Vector2(0.40672392, 0.36206147)
+texture = SubResource("AtlasTexture_0vels")
+
+[node name="sig3" type="Area2D" parent="." unique_id=541254062]
+position = Vector2(30.999998, -17)
+rotation = 1.5731535
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Sprite2D" type="Sprite2D" parent="sig3" unique_id=1335090737]
+position = Vector2(2.999988, -0.0070726275)
+scale = Vector2(0.40672392, 0.36206147)
+texture = SubResource("AtlasTexture_0vels")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=585271344]
+stream = ExtResource("3_x7afv")
+pitch_scale = 2.0
+bus = &"Crowd"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1914042360]
+stream = ExtResource("4_x3ik8")
+pitch_scale = 0.5
+bus = &"Engine"

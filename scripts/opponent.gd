@@ -64,7 +64,6 @@ func load_track_from_json(path) -> Array:
 
 func _physics_process(delta: float) -> void:
 	if lap_ > 3:
-		print("STOPPING")
 		_velocity = 0.0
 		velocity = Vector2.ZERO
 		set_physics_process(false)

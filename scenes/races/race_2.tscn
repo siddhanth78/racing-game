@@ -1,12 +1,25 @@
 [gd_scene format=3 uid="uid://ooet13p4csof"]
 
 [ext_resource type="PackedScene" uid="uid://8dnahah6dcxm" path="res://scenes/tracks/track_2.tscn" id="1_cs2wm"]
+[ext_resource type="Script" uid="uid://bls7b7ubm5o3j" path="res://scripts/race.gd" id="1_dkn0t"]
 [ext_resource type="PackedScene" uid="uid://byy8nqqxdmeii" path="res://scenes/car/car.tscn" id="2_bdrxv"]
+[ext_resource type="PackedScene" uid="uid://hgam45t8yk8e" path="res://scenes/minimap.tscn" id="3_bdrxv"]
+[ext_resource type="PackedScene" uid="uid://d12yxdsdjtwyb" path="res://scenes/car/opponent.tscn" id="3_hakt8"]
 
 [node name="Race2" type="Node2D" unique_id=467116091]
+script = ExtResource("1_dkn0t")
 
 [node name="Track2" parent="." unique_id=127915273 instance=ExtResource("1_cs2wm")]
 
+[node name="Opponent" parent="." unique_id=715724631 instance=ExtResource("3_hakt8")]
+position = Vector2(35, 110)
+acceleration = 100.0
+SLOW_RADIUS = 75.0
+SLOW_SPEED = 100.0
+
 [node name="Car" parent="." unique_id=2013520536 instance=ExtResource("2_bdrxv")]
-position = Vector2(612, 410)
-scale = Vector2(0.25, 0.25)
+position = Vector2(35, 120)
+set_timer = true
+
+[node name="minimap" parent="." unique_id=1144442252 instance=ExtResource("3_bdrxv")]
+tile_size = 8.0

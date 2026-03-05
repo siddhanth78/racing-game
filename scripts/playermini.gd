@@ -1,7 +1,7 @@
 extends Sprite2D
 
 func _ready() -> void:
-	position = Vector2(90, 90)  # center of your 200x200 viewport
+	position = Vector2(140, 140)
 	modulate.a = 0.5
 
 

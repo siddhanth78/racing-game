@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://y6ku1oq4wag2"]
 
-[ext_resource type="Script" uid="uid://bw5oh1nfqecw8" path="res://scripts/race_1.gd" id="1_41a2b"]
+[ext_resource type="Script" uid="uid://bls7b7ubm5o3j" path="res://scripts/race.gd" id="1_03ixw"]
 [ext_resource type="PackedScene" uid="uid://c75rl5624u2d2" path="res://scenes/tracks/track.tscn" id="1_w1cb2"]
 [ext_resource type="PackedScene" uid="uid://byy8nqqxdmeii" path="res://scenes/car/car.tscn" id="2_c6fq0"]
 [ext_resource type="PackedScene" uid="uid://d12yxdsdjtwyb" path="res://scenes/car/opponent.tscn" id="2_itng5"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://hgam45t8yk8e" path="res://scenes/minimap.tscn" id="13_03ixw"]
 
 [node name="Race1" type="Node2D" unique_id=99033511]
-script = ExtResource("1_41a2b")
+script = ExtResource("1_03ixw")
 
 [node name="Track" parent="." unique_id=927561726 instance=ExtResource("1_w1cb2")]
 position = Vector2(306, 281)
@@ -292,5 +292,4 @@ scale = Vector2(0.63265455, 1)
 texture = ExtResource("9_dx5oe")
 
 [node name="minimap" parent="." unique_id=1144442252 instance=ExtResource("13_03ixw")]
-tile_size = 32.0
-padding = 5.0
+tile_size = 8.0

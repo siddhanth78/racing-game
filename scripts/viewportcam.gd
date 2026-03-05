@@ -2,8 +2,9 @@ extends Camera2D
 
 var tile_size := 64.0
 var padding := 3.0
-var viewport_size := 200.0
+var viewport_size := 300.0
 var player: Node2D
+var opponent: Node2D
 
 func setup() -> void:
 	var padding_px = padding * tile_size

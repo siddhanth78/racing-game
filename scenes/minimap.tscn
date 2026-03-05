@@ -10,13 +10,13 @@
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ha27p"]
-size = Vector2(198, 200)
+size = Vector2(294, 302)
 
 [node name="minimap" type="CanvasLayer" unique_id=1144442252]
 script = ExtResource("1_w8tna")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=39652401]
-size = Vector2i(200, 200)
+size = Vector2i(300, 300)
 script = ExtResource("1_dsx0k")
 
 [node name="Camera2D" type="Camera2D" parent="SubViewport" unique_id=1645732057]
@@ -24,6 +24,7 @@ ignore_rotation = false
 script = ExtResource("2_w8tna")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=962680954]
+position = Vector2(47, 52)
 collision_layer = 128
 collision_mask = 128
 script = ExtResource("3_mttn5")
@@ -34,7 +35,7 @@ rotation = -1.5707964
 texture = SubResource("ViewportTexture_fkyvp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=218721306]
-position = Vector2(100, 100)
+position = Vector2(100, 98)
 shape = SubResource("RectangleShape2D_ha27p")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=64213079]

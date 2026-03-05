@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://j0131rnrrlwx"]
+
+[ext_resource type="Texture2D" uid="uid://brp16wlmlqskk" path="res://assets/FinishLine.png" id="1_y7apy"]
+[ext_resource type="FontFile" uid="uid://jviekg3j0w8t" path="res://Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="2_kx5sk"]
+[ext_resource type="PackedScene" uid="uid://cyfuf5ua0hh5o" path="res://scenes/signal.tscn" id="3_p7r82"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xcl0"]
+size = Vector2(7, 51)
+
+[sub_resource type="LabelSettings" id="LabelSettings_af04h"]
+font = ExtResource("2_kx5sk")
+outline_size = 6
+outline_color = Color(0.0045364476, 0.004536448, 0.0045364476, 1)
+
+[node name="race_line" type="Area2D" unique_id=323856887]
+rotation = 3.1430528
+collision_layer = 12
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1537287496]
+position = Vector2(0, 1.9073486e-06)
+shape = SubResource("RectangleShape2D_6xcl0")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1246486866]
+offset_left = 2.9853928
+offset_top = -10.004368
+offset_right = 26.985394
+offset_bottom = -3.1432037
+rotation = 1.5716232
+texture = ExtResource("1_y7apy")
+
+[node name="Label" type="Label" parent="." unique_id=1239094]
+offset_left = 13.048168
+offset_top = 32.980984
+offset_right = 52.04817
+offset_bottom = 52.980984
+rotation = -3.1415927
+text = "LAP 1"
+label_settings = SubResource("LabelSettings_af04h")
+
+[node name="signal" parent="." unique_id=530841040 instance=ExtResource("3_p7r82")]
+position = Vector2(18.982454, -12.02773)
+rotation = 3.1401324

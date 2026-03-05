@@ -1,18 +1,67 @@
 [gd_scene format=4 uid="uid://8dnahah6dcxm"]
 
+[ext_resource type="Script" uid="uid://cwr26o8ubcx6y" path="res://scripts/track.gd" id="1_428hi"]
 [ext_resource type="PackedScene" uid="uid://cyfs43n1pjxhs" path="res://scenes/tracks/track_tiles.tscn" id="1_eq8k1"]
+[ext_resource type="PackedScene" uid="uid://j0131rnrrlwx" path="res://scenes/race_line.tscn" id="3_4io3p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfumu"]
+size = Vector2(7, 51)
 
 [node name="Track2" type="Node2D" unique_id=127915273]
-position = Vector2(570, 302)
+position = Vector2(-2, 3)
+script = ExtResource("1_428hi")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=260842774]
 
 [node name="ColorRect" type="ColorRect" parent="Area2D" unique_id=2123447375]
-offset_left = -620.0
-offset_top = -391.0
-offset_right = 633.0
-offset_bottom = 511.0
+offset_left = -701.0
+offset_top = -475.0
+offset_right = 733.0
+offset_bottom = 566.0
 color = Color(0.73988664, 0.55113083, 0.88454586, 1)
 
 [node name="TrackTiles" parent="." unique_id=1978805555 instance=ExtResource("1_eq8k1")]
-tile_map_data = PackedByteArray("AAD8//v/AwABAAAAAAD8//z/AwABAAAAAAD8//3/AwABAAAAAAD8//7/AwABAAAAAAD8////AwABAAAAAAD8/wAAAwABAAAAAAD8/wEAAwABAAAAAAD8/wIAAwABAAAAAAD8/wMAAwABAAAAAAD8/wQAAwABAAAAAAD8/wUAAwABAAAAAAD8/wYAAwACAAAAADD9/wYAAwABAAAAAHD+/wYAAwACAAAAAFD+/wUAAwABAAAAAAD+/wQAAwACAAAAABD//wQAAwABAAAAAEAAAAQAAwACAAAAAHAAAAUAAwABAAAAAAAAAAYAAwACAAAAADABAAYAAwABAAAAAEACAAYAAwACAAAAAFACAAUAAwABAAAAAAACAAQAAwABAAAAAAACAAMAAwABAAAAAAACAAIAAwABAAAAAAACAAEAAwABAAAAAAACAAAAAwACAAAAAAABAAAAAwABAAAAAFAAAAAAAwACAAAAAEAAAP//AwABAAAAAAAAAP7/AwABAAAAAAAAAP3/AwABAAAAAAAAAPz/AwACAAAAABABAPz/AwABAAAAAFACAPz/AwACAAAAAFACAPv/AwABAAAAAAACAPr/AwACAAAAAAABAPr/AwABAAAAAFAAAPr/AwABAAAAAFD///r/AwABAAAAAFD+//r/AwACAAAAAED+//n/AwACAAAAAAD9//n/AwAAAAAAAFD8//n/AwACAAAAAGD8//r/AwAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAACAAIAAwABAAAAAAACAPz/AwACAAAAAFABAPz/AwABAAAAAFAAAPz/AwACAAAAABAAAAAAAwACAAAAAEAAAP//AwABAAAAAAAAAP7/AwABAAAAAAAAAP3/AwABAAAAAAD8//v/AwABAAAAAAD8//z/AwABAAAAAAD8//3/AwABAAAAAAD8//7/AwABAAAAAAD8////AwABAAAAAAD8/wAAAwABAAAAAAD8/wEAAwABAAAAAAD8/wIAAwABAAAAAAD8/wMAAwABAAAAAAD8/wQAAwABAAAAAAD8/wUAAwABAAAAAAD8/wYAAwACAAAAADD9/wYAAwABAAAAAHD+/wYAAwACAAAAAFD+/wUAAwABAAAAAAD+/wQAAwACAAAAABD//wQAAwABAAAAAEAAAAQAAwACAAAAAHAAAAUAAwABAAAAAAAAAAYAAwACAAAAADABAAYAAwABAAAAAEACAAYAAwACAAAAAFACAAUAAwABAAAAAAACAAQAAwABAAAAAAACAAMAAwABAAAAAAACAAEAAwABAAAAAAACAAAAAwACAAAAAAABAAAAAwABAAAAAFACAPv/AwABAAAAAAACAPr/AwACAAAAAAABAPr/AwABAAAAAFAAAPr/AwABAAAAAFD///r/AwABAAAAAFD+//r/AwACAAAAAED+//n/AwACAAAAAAD9//n/AwAAAAAAAFD8//n/AwACAAAAAGD8//r/AwAAAAAAAAA=")
+
+[node name="cp1" type="Area2D" parent="." unique_id=814811793]
+position = Vector2(164, 113)
+collision_layer = 12
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cp1" unique_id=1276546075]
+shape = SubResource("RectangleShape2D_gfumu")
+
+[node name="cp2" type="Area2D" parent="." unique_id=1125394624]
+position = Vector2(106, -79)
+collision_layer = 12
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cp2" unique_id=258671449]
+shape = SubResource("RectangleShape2D_gfumu")
+
+[node name="cp3" type="Area2D" parent="." unique_id=1009413427]
+position = Vector2(-47.000004, -17)
+rotation = 3.1372914
+collision_layer = 12
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cp3" unique_id=2144938904]
+shape = SubResource("RectangleShape2D_gfumu")
+
+[node name="cp4" type="Area2D" parent="." unique_id=1783989886]
+position = Vector2(-175, 14)
+rotation = 4.711295
+collision_layer = 12
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cp4" unique_id=176779533]
+shape = SubResource("RectangleShape2D_gfumu")
+
+[node name="race_line" parent="." unique_id=323856887 instance=ExtResource("3_4io3p")]
+position = Vector2(55, 114)
+
+[connection signal="body_entered" from="cp1" to="." method="_on_cp_1_body_entered"]
+[connection signal="body_entered" from="cp2" to="." method="_on_cp_2_body_entered"]
+[connection signal="body_entered" from="cp3" to="." method="_on_cp_3_body_entered"]
+[connection signal="body_entered" from="cp4" to="." method="_on_cp_4_body_entered"]
+[connection signal="body_entered" from="race_line" to="." method="_on_race_line_body_entered"]

@@ -5,7 +5,7 @@ extends Node2D
 func _ready() -> void:
 	$Car.scale.x = 0.5
 	$Car.scale.y = 0.5
-	$Car.set_timer = false
+	$Car.cp_ = -1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
