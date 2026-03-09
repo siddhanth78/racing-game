@@ -21,13 +21,18 @@ script = ExtResource("1_03ixw")
 position = Vector2(306, 281)
 
 [node name="Opponent" parent="." unique_id=1563058585 instance=ExtResource("2_itng5")]
-acceleration = 100.0
+acceleration = 50.0
+max_speed = 300.0
 SLOW_RADIUS = 75.0
-SLOW_SPEED = 100.0
+SLOW_SPEED = 75.0
 
 [node name="Car" parent="." unique_id=1591443225 instance=ExtResource("2_c6fq0")]
 position = Vector2(301, 262)
+acceleration = 40.0
+friction = 200.0
+max_speed = 400.0
 set_timer = true
+gear_thresholds = Array[float]([0.0, 100.0, 200.0, 300.0, 400.0])
 
 [node name="Area2D" type="Area2D" parent="." unique_id=657752109]
 position = Vector2(237, 108)
